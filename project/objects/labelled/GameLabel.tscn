@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://objects/labelled/GameLabel.gd" type="Script" id=1]
+
+[node name="GameLabel" type="Label" groups=[
+"game_label",
+]]
+anchor_left = -0.00412049
+anchor_top = -0.0116667
+anchor_right = 0.00466857
+anchor_bottom = 0.0116667
+margin_top = 0.280617
+margin_bottom = 0.280617
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "A"
+align = 1
+valign = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
