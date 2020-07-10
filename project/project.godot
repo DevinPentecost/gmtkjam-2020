@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Godot Project"
+config/name="GMTK Jam 2020"
 config/icon="res://icon.png"
 
 [rendering]
