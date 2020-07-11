@@ -23,7 +23,7 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 	else:
 		#Start flying around
-		_integrate_active_hooks(delta)
+		_integrate_active_hooks()
 	
 	#Make sure we don't exceed max speed
 	velocity = velocity.clamped(max_speed)
@@ -32,7 +32,7 @@ func _physics_process(delta):
 	#Drag velocity (when drifting only!)
 	velocity = velocity * (1 - drag * delta)
 	
-func _integrate_active_hooks(delta):
+func _integrate_active_hooks():
 	#Get all of the active hooks
 	var active_hooks = []
 	for hook in get_tree().get_nodes_in_group("hook"):

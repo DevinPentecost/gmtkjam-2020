@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://objects/labelled/Hook.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/level/Obstacle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/labelled/Turret.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/labelled/Rocket.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/level/GameHandler.gd" type="Script" id=7]
 
-[node name="HookRoom" type="Node2D"]
+[sub_resource type="GDScript" id=1]
+
+[node name="HookRoom" type="Node2D" groups=[
+"turret_listener",
+]]
+script = ExtResource( 7 )
 
 [node name="Hooks" type="Node" parent="."]
 
@@ -24,3 +32,12 @@ position = Vector2( 440.972, 263.324 )
 
 [node name="Obstacle" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 540.506, 394.355 )
+
+[node name="Turrets" type="Node" parent="."]
+script = SubResource( 1 )
+
+[node name="Turret" parent="Turrets" instance=ExtResource( 4 )]
+position = Vector2( 478.6, 271.524 )
+
+[node name="Rocket" parent="." instance=ExtResource( 5 )]
+position = Vector2( 716.792, 109.594 )

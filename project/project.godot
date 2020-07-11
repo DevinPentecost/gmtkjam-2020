@@ -18,21 +18,28 @@ _global_script_classes=[ {
 "class": "Hook",
 "language": "GDScript",
 "path": "res://objects/labelled/Hook.gd"
+}, {
+"base": "Area2D",
+"class": "Turret",
+"language": "GDScript",
+"path": "res://objects/labelled/Turret.gd"
 } ]
 _global_script_class_icons={
 "GameLabel": "",
-"Hook": ""
+"Hook": "",
+"Turret": ""
 }
 
 [application]
 
 config/name="GMTK Jam 2020"
-run/main_scene="res://scenes/test/hook_room.tscn"
+run/main_scene="res://scenes/main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 LabelHelper="*res://singletons/LabelHelper.tscn"
+Coroutines="*res://singletons/Coroutines.gd"
 
 [display]
 

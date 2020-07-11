@@ -41,7 +41,8 @@ func get_current_labels():
 		labels.append(label.label)
 	return labels
 
-func get_random_label(replace=false, hand=HAND.LEFT):
+func get_random_label(hand=HAND.LEFT, replace=false):
+	
 	#Pull a random label from the bag
 	var bag = null
 	if hand == HAND.LEFT:
@@ -66,3 +67,9 @@ func replace_label(label):
 	else:
 		#Where did this label come from?
 		pass
+
+func swap_label(label, hand=HAND.LEFT):
+	#Get a new label
+	var new_label = get_random_label(hand)
+	replace_label(label)
+	return new_label

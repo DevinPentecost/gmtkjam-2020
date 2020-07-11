@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://objects/level/Alert.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/something.ogg" type="AudioStream" id=2]
+[ext_resource path="res://objects/something.png" type="Texture" id=3]
+[ext_resource path="res://objects/level/TurretSpawn.gd" type="Script" id=4]
+
+[node name="TurretSpawn" type="Position2D" groups=[
+"turret_spawner",
+]]
+script = ExtResource( 4 )
+
+[node name="Alert" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -35.2778 )
+texture = ExtResource( 3 )
+
+[node name="AudioStreamPlayer2D" parent="Alert" index="1"]
+stream = ExtResource( 2 )
+volume_db = 8.078
+pitch_scale = 1.38
+
+[editable path="Alert"]
