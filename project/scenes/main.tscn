@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://objects/level/GameHandler.gd" type="Script" id=1]
 [ext_resource path="res://objects/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/level/TurretSpawn.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/labelled/Hook.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/level/Motivator.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node2D" groups=[
 "turret_listener",
@@ -88,3 +89,6 @@ position = Vector2( 668.622, 297.084 )
 
 [node name="TurretSpawn8" parent="." instance=ExtResource( 3 )]
 position = Vector2( 525.794, 520.002 )
+
+[node name="Motivator" parent="." instance=ExtResource( 5 )]
+position = Vector2( 36.3183, 44.3749 )

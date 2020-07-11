@@ -13,6 +13,8 @@ enum HAND {
 
 
 func _enter_tree():
+	randomize()
+	
 	#Set up labels
 	for label in LEFT_LABELS:
 		UNUSED_LEFT.append(label)

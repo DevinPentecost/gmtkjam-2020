@@ -8,7 +8,7 @@ var _kill_time = kill_time
 var active = false
 
 var rocket_force = 0.3 # Velocity per second
-var current_velocity = 0.25
+var current_velocity = 0.15
 var velocity = Vector2.ZERO
 var direction = Vector2.ONE
 var max_velocity = 7
@@ -33,6 +33,13 @@ func _process(delta):
 	if _kill_time < 0:
 		_kill()
 		_kill_time = 99999
+		velocity = Vector2.ZERO
+		current_velocity = Vector2.ZERO
+		set_process(false)
+		modulate = Color.white
+		monitorable = false
+		monitoring = false
+		return
 		
 		
 	#How much health left on the rocket?

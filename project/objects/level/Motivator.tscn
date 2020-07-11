@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://objects/labelled/rocket.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Area2D
+
+
+var rocket_force = 0.3 # Velocity per second
+var current_velocity = 0.25
+var velocity = Vector2.ZERO
+var direction = Vector2.ONE
+var max_velocity = 7
+
+var player = null
+onready var sprite = $Sprite
+
+
+func _ready():
+	player = get_tree().get_nodes_in_group(\"player\").pop_back()
+	if player:
+		velocity = (player.global_position - global_position).normalized() * current_velocity
+		
+	set_process(true)
+
+func _process(delta):
+	#Sprite always faces at player
+	if player:
+		sprite.rotation = (player.global_position - global_position).normalized().angle() + PI/2
+		
+		#Move the rocket towards the player
+		direction = (player.global_position - global_position).normalized()
+	
+	velocity = direction * current_velocity
+	position += velocity
+"
+
+[sub_resource type="CircleShape2D" id=2]
+
+[node name="Motivator" type="Area2D" groups=[
+"deadly",
+]]
+script = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 1 )
