@@ -29,6 +29,7 @@ func _process(delta):
 		sprite.rotation = (player.global_position - global_position).normalized().angle() + PI/2
 
 func _launch():
+	
 	#Pick a new time
 	var launch_time = rand_range(launch_time_range.x, launch_time_range.y)
 	launch_time -= launch_time_speedup * difficulty
@@ -36,6 +37,9 @@ func _launch():
 	#Run the timer...
 	$Timer.start(launch_time)
 	yield($Timer, "timeout")
+	
+	if not player or not player.alive:
+		return
 	
 	#Launch a missle
 	emit_signal("launched_rocket")

@@ -17,9 +17,6 @@ script = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="GameLabel" parent="." instance=ExtResource( 1 )]
-hand = 1
-
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 
@@ -33,6 +30,13 @@ pitch_scale = 1.31
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
+
+[node name="GameLabel" parent="." instance=ExtResource( 1 )]
+margin_left = -4.5
+margin_top = -6.71938
+margin_right = 4.5
+margin_bottom = 7.28062
+hand = 1
 [connection signal="label_activated" from="GameLabel" to="." method="_on_GameLabel_label_activated"]
 
 [editable path="Alert"]

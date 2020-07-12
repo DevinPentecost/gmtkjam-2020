@@ -1,8 +1,12 @@
 tool
 extends Area2D
 
+signal player_died
+
 export (float) var radius = 10
 export (Color) var color = Color.beige
+export var explosion = "res://objects/explosion.png"
+var _explosion = load(explosion)
 
 export (float) var hook_force = 4
 export (float) var max_speed = 4
@@ -10,6 +14,7 @@ export (float, 0, 2) var drag = 0.5
 
 var latched_node = null
 var velocity = Vector2(0, 0)
+var alive = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,6 +22,10 @@ func _ready():
 	set_physics_process(true)
 
 func _physics_process(delta):
+	
+	if not alive:
+		velocity = Vector2.ZERO
+		return
 	
 	#Are we latched onto a hook?
 	if latched_node and latched_node.active:
@@ -52,6 +61,16 @@ func _integrate_hook(hook):
 	var force = direction * hook_force
 	velocity = velocity + force
 
+func _die():
+	if not alive:
+		return
+	print("YOU DIED!!!!")
+	emit_signal("player_died")
+	$Sprite.texture = _explosion
+	$AudioStreamPlayer2D.play()
+	
+	alive = false
+
 
 func _draw():
 	draw_circle(Vector2.ZERO, radius, color)
@@ -66,7 +85,8 @@ func _on_Player_area_entered(area):
 	
 	if area.is_in_group("deadly"):
 		#Take some damage
-		print("YOU DIED!!!!")
+		_die()
+		area._kill()
 
 
 func _on_Player_area_exited(area):

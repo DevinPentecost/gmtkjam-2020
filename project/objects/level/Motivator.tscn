@@ -33,6 +33,11 @@ func _process(delta):
 	
 	velocity = direction * current_velocity
 	position += velocity
+
+func _kill():
+	#Wait for both an explosion animation to play and the explosion sound
+	print(\"Motivator dead\")
+	queue_free()
 "
 
 [sub_resource type="CircleShape2D" id=2]

@@ -21,11 +21,13 @@ color = Color( 0.156863, 0.388235, 0.619608, 1 )
 shape = SubResource( 1 )
 
 [node name="Alert" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, -29.7302 )
+position = Vector2( 0, -30.0274 )
 texture = ExtResource( 5 )
 
 [node name="AudioStreamPlayer2D" parent="Alert" index="1"]
+position = Vector2( -0.297302, 0 )
 stream = ExtResource( 4 )
+volume_db = 9.087
 [connection signal="label_activated" from="GameLabel" to="." method="_on_GameLabel_label_activated"]
 
 [editable path="Alert"]
