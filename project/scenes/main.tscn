@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://objects/level/GameHandler.gd" type="Script" id=1]
 [ext_resource path="res://objects/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/level/TurretSpawn.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/labelled/Hook.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/level/Motivator.tscn" type="PackedScene" id=5]
+[ext_resource path="res://chalk_monkeys.ogg" type="AudioStream" id=6]
 
 [node name="Main" type="Node2D" groups=[
 "turret_listener",
@@ -18,36 +19,47 @@ script = ExtResource( 1 )
 
 [node name="Hook9" parent="Hooks" instance=ExtResource( 4 )]
 position = Vector2( 794.146, 296.112 )
+active_color = Color( 1, 0.65, 0, 1 )
 
 [node name="Hook" parent="Hooks" instance=ExtResource( 4 )]
 position = Vector2( 85.3786, 291.356 )
+active_color = Color( 1, 0.65, 0, 1 )
 
 [node name="Hook2" parent="Hooks" instance=ExtResource( 4 )]
 position = Vector2( 286.355, 105.839 )
+active_color = Color( 1, 0.65, 0, 1 )
 
 [node name="Hook3" parent="Hooks" instance=ExtResource( 4 )]
 position = Vector2( 787.011, 91.569 )
+active_color = Color( 1, 0.65, 0, 1 )
 
 [node name="Hook4" parent="Hooks" instance=ExtResource( 4 )]
 position = Vector2( 791.768, 508.981 )
+active_color = Color( 1, 0.65, 0, 1 )
 
 [node name="Hook5" parent="Hooks" instance=ExtResource( 4 )]
 position = Vector2( 286.355, 489.953 )
+active_color = Color( 1, 0.65, 0, 1 )
 
 [node name="Hook6" parent="Hooks" instance=ExtResource( 4 )]
 position = Vector2( 532.521, 215.246 )
+active_color = Color( 1, 0.65, 0, 1 )
 
 [node name="Hook7" parent="Hooks" instance=ExtResource( 4 )]
 position = Vector2( 525.385, 400.763 )
+active_color = Color( 1, 0.65, 0, 1 )
 
 [node name="Hook8" parent="Hooks" instance=ExtResource( 4 )]
 position = Vector2( 280.409, 288.977 )
+active_color = Color( 1, 0.65, 0, 1 )
 
 [node name="Hook10" parent="Hooks" instance=ExtResource( 4 )]
 position = Vector2( 941.608, 298.491 )
+active_color = Color( 1, 0.65, 0, 1 )
 
 [node name="Hook11" parent="Hooks" instance=ExtResource( 4 )]
 position = Vector2( 523.324, 569.143 )
+active_color = Color( 1, 0.65, 0, 1 )
 
 [node name="Hook12" parent="Hooks" instance=ExtResource( 4 )]
 position = Vector2( 525.702, 39.9461 )
@@ -92,3 +104,40 @@ position = Vector2( 525.794, 520.002 )
 
 [node name="Motivator" parent="." instance=ExtResource( 5 )]
 position = Vector2( 36.3183, 44.3749 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -21.204
+autoplay = true
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 502.467
+margin_top = 285.088
+margin_right = 570.467
+margin_bottom = 299.088
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_right = 68.0
+margin_bottom = 14.0
+text = "YOU DEAD"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+margin_top = 18.0
+margin_right = 68.0
+margin_bottom = 38.0
+text = "RESTART"
+[connection signal="player_died" from="Player" to="." method="_on_Player_player_died"]
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_Button_pressed"]

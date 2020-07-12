@@ -83,3 +83,12 @@ func _on_TurretSpawner_spawned_turret(spawner):
 	#Add it to our collection
 	turrets.add_child(new_turret)
 
+
+
+func _on_Button_pressed():
+	get_tree().reload_current_scene()
+
+
+func _on_Player_player_died():
+	$HBoxContainer.visible = true
+	pass # Replace with function body.

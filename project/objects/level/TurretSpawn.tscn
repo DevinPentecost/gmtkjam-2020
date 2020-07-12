@@ -21,6 +21,7 @@ volume_db = 8.078
 pitch_scale = 1.38
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 5 )
 
 [editable path="Alert"]

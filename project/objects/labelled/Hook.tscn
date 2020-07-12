@@ -1,33 +1,45 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://objects/labelled/GameLabel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/labelled/Hook.gd" type="Script" id=2]
-[ext_resource path="res://objects/level/Alert.tscn" type="PackedScene" id=3]
-[ext_resource path="res://objects/something.ogg" type="AudioStream" id=4]
-[ext_resource path="res://objects/something.png" type="Texture" id=5]
+[ext_resource path="res://objects/hole3.png" type="Texture" id=3]
+[ext_resource path="res://objects/hole2.png" type="Texture" id=4]
+[ext_resource path="res://objects/hole.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "active",
+"speed": 5.0
+} ]
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 14.0
 
 [node name="Hook" type="Area2D" groups=[
 "hook",
 ]]
 position = Vector2( 0.944946, 0 )
 script = ExtResource( 2 )
-color = Color( 0.156863, 0.388235, 0.619608, 1 )
+radius = 14
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.4, 0.4 )
+frames = SubResource( 2 )
+animation = "idle"
 
 [node name="GameLabel" parent="." instance=ExtResource( 1 )]
+margin_left = -6.03178
+margin_top = -14.1859
+margin_right = 6.96822
+margin_bottom = 10.8141
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
-
-[node name="Alert" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, -30.0274 )
-texture = ExtResource( 5 )
-
-[node name="AudioStreamPlayer2D" parent="Alert" index="1"]
-position = Vector2( -0.297302, 0 )
-stream = ExtResource( 4 )
-volume_db = 9.087
 [connection signal="label_activated" from="GameLabel" to="." method="_on_GameLabel_label_activated"]
-
-[editable path="Alert"]
