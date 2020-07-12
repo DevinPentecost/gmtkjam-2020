@@ -1,16 +1,38 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://objects/player/Player.gd" type="Script" id=1]
+[ext_resource path="res://objects/player1.png" type="Texture" id=2]
+[ext_resource path="res://objects/player2.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "pull",
+"speed": 5.0
+} ]
 
 [node name="Player" type="Area2D" groups=[
 "player",
 ]]
+position = Vector2( 0, -0.166855 )
 script = ExtResource( 1 )
+color = Color( 0.960784, 0.960784, 0.858824, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.35, 0.35 )
+frames = SubResource( 2 )
+animation = "idle"
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Player_area_exited"]
 [connection signal="body_shape_entered" from="." to="." method="_on_Player_body_shape_entered"]

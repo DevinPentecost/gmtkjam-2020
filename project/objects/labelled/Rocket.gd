@@ -64,7 +64,7 @@ func _kill():
 	#Wait for both an explosion animation to play and the explosion sound
 	print("Rocket dead")
 	
-	sprite.texture = _rocket_explosion
+	sprite.play("explosion")
 	
 	$AudioStreamPlayer2D.play()
 	yield($AudioStreamPlayer2D, "finished")

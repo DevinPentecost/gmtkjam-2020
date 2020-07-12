@@ -1,31 +1,24 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://objects/labelled/GameLabel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/labelled/Hook.gd" type="Script" id=2]
-[ext_resource path="res://objects/level/Alert.tscn" type="PackedScene" id=3]
-[ext_resource path="res://objects/something.ogg" type="AudioStream" id=4]
-[ext_resource path="res://objects/something.png" type="Texture" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 14.0
 
 [node name="Hook" type="Area2D" groups=[
 "hook",
 ]]
 position = Vector2( 0.944946, 0 )
 script = ExtResource( 2 )
-color = Color( 0.156863, 0.388235, 0.619608, 1 )
+radius = 14
 
 [node name="GameLabel" parent="." instance=ExtResource( 1 )]
+margin_left = -6.03178
+margin_top = -14.1859
+margin_right = 6.96822
+margin_bottom = 10.8141
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
-
-[node name="Alert" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, -29.7302 )
-texture = ExtResource( 5 )
-
-[node name="AudioStreamPlayer2D" parent="Alert" index="1"]
-stream = ExtResource( 4 )
 [connection signal="label_activated" from="GameLabel" to="." method="_on_GameLabel_label_activated"]
-
-[editable path="Alert"]

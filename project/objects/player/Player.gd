@@ -11,10 +11,13 @@ export (float, 0, 2) var drag = 0.5
 var latched_node = null
 var velocity = Vector2(0, 0)
 
+onready var player_sprite = get_node("Sprite")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	($CollisionShape2D.shape as CircleShape2D).radius = radius
 	set_physics_process(true)
+	
 
 func _physics_process(delta):
 	
@@ -23,11 +26,18 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 	else:
 		#Start flying around
+		
+		player_sprite.play("idle")
 		_integrate_active_hooks()
 	
 	#Make sure we don't exceed max speed
 	velocity = velocity.clamped(max_speed)
 	position += velocity
+	
+	if velocity.x>0:
+		player_sprite.flip_h = false
+	else:
+		player_sprite.flip_h = true
 	
 	#Drag velocity (when drifting only!)
 	velocity = velocity * (1 - drag * delta)
@@ -41,6 +51,7 @@ func _integrate_active_hooks():
 
 	#Pull towards active hooks
 	if active_hooks.size():
+		player_sprite.play("pull")
 		velocity = Vector2.ZERO
 		for hook in active_hooks:
 			_integrate_hook(hook)
