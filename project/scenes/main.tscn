@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://objects/level/GameHandler.gd" type="Script" id=1]
 [ext_resource path="res://objects/player/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,29 @@
 [ext_resource path="res://objects/labelled/Hook.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/level/Motivator.tscn" type="PackedScene" id=5]
 [ext_resource path="res://chalk_monkeys.ogg" type="AudioStream" id=6]
+[ext_resource path="res://objects/coolvetica rg.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 54
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="DynamicFont" id=7]
+size = 42
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 7 )
 
 [node name="Main" type="Node2D" groups=[
 "turret_listener",
@@ -68,6 +91,7 @@ position = Vector2( 525.702, 39.9461 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 531.744, 291.328 )
+z_index = 1
 
 [node name="TurretTimer" type="Timer" parent="."]
 one_shot = true
@@ -105,28 +129,27 @@ position = Vector2( 525.794, 520.002 )
 [node name="Motivator" parent="." instance=ExtResource( 5 )]
 position = Vector2( 36.3183, 44.3749 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-volume_db = -21.204
-autoplay = true
-
 [node name="HBoxContainer" type="VBoxContainer" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 502.467
-margin_top = 285.088
-margin_right = 570.467
-margin_bottom = 299.088
+margin_left = -5.0
+margin_top = -5.0
+margin_right = 1040.0
+margin_bottom = 610.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="HBoxContainer"]
-margin_right = 68.0
-margin_bottom = 14.0
+margin_top = 247.0
+margin_right = 1045.0
+margin_bottom = 313.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.847059, 0.882353, 0.662745, 1 )
 text = "YOU DEAD"
 align = 1
 valign = 1
@@ -135,9 +158,24 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="HBoxContainer"]
-margin_top = 18.0
-margin_right = 68.0
-margin_bottom = 38.0
+margin_top = 317.0
+margin_right = 1045.0
+margin_bottom = 368.0
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.788235, 0.678431, 0.137255, 1 )
+custom_colors/font_color_hover = Color( 0.94902, 0.54902, 0.54902, 1 )
+custom_colors/font_color_pressed = Color( 0.788235, 0.678431, 0.137255, 1 )
 text = "RESTART"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -21.204
+autoplay = true
 [connection signal="player_died" from="Player" to="." method="_on_Player_player_died"]
 [connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_Button_pressed"]
