@@ -32,9 +32,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GMTK Jam 2020"
+config/name="CARP"
 run/main_scene="res://scenes/main.tscn"
-config/icon="res://icon.png"
+config/icon="res://logo.png"
 
 [autoload]
 

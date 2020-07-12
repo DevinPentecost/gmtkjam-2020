@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://objects/labelled/GameLabel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/labelled/Rocket.gd" type="Script" id=2]
@@ -7,7 +7,9 @@
 [ext_resource path="res://objects/alert.ogg" type="AudioStream" id=5]
 [ext_resource path="res://objects/labelled/rocket_explode.ogg" type="AudioStream" id=6]
 [ext_resource path="res://objects/rocket1.png" type="Texture" id=7]
-[ext_resource path="res://objects/explosion.png" type="Texture" id=8]
+[ext_resource path="res://objects/exp3.png" type="Texture" id=8]
+[ext_resource path="res://objects/exp1.png" type="Texture" id=9]
+[ext_resource path="res://objects/exp2.png" type="Texture" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.47757
@@ -19,8 +21,8 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 8 ) ],
+"loop": false,
 "name": "explosion",
 "speed": 5.0
 } ]
